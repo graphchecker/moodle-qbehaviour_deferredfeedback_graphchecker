@@ -26,9 +26,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qbehaviour_deferredfeedback_graphchecker';
-$plugin->version   = 2020061100;
+$plugin->version   = 2020102200;
 
-$plugin->requires  = 2019111200;
+$plugin->requires  = 2018051700;
 
 $plugin->maturity  = MATURITY_STABLE;
 

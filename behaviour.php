@@ -131,4 +131,23 @@ class qbehaviour_deferredfeedback_graphchecker extends question_behaviour_with_s
         $pendingstep->set_new_response_summary($this->question->summarise_response($response));
         return question_attempt::KEEP;
     }
+
+    /**
+     * Used by {@link start_based_on()} to get the data needed to start a new
+     * attempt from the point this attempt has go to.
+     *
+     * Just like adaptive_adapted_for_coderunner, we need to override this
+     * because this behavior storing data in qt_data messes with getting the
+     * answer. See get_our_resume_data() in adaptive_adapted_for_coderunner
+     * for more details.
+     */
+    protected function get_our_resume_data() {
+        $answer = $this->qa->get_last_qt_var('answer');
+        if ($answer) {
+            return array('answer' => $answer);
+        } else {
+            return array();
+        }
+    }
 }
+
